@@ -1,9 +1,9 @@
 package com.imoonx.kotlin
 
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.imoonx.util.XLog
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,40 +14,42 @@ class MainActivity : AppCompatActivity() {
         desc.text = getString(R.string.app_name)
         desc.setOnClickListener {
             Toast.makeText(this, MainActivity::class.simpleName, Toast.LENGTH_LONG).show()
-            Log.e(MainActivity::class.simpleName, MainActivity::class.simpleName ?: "123456")
+            XLog.e(MainActivity::class.java, MainActivity::class.simpleName ?: "123456")
         }
+
         //匿名函数
         val sumLambda: (String, String) -> String = { x, y -> x + y }
-        Log.e(MainActivity::class.simpleName, sumLambda("123456", "7890"))
-        for (i in 4 downTo 1) Log.e(MainActivity::class.simpleName, "i=$i")
+        XLog.e(MainActivity::class.java, sumLambda("123456", "7890"))
+
+        for (i in 4 downTo 1) XLog.e(MainActivity::class.java, "i=$i")
+
         val text = """
                     |多行字符串
-                    |菜鸟教程
                     |多行字符串
-                    |Runoob
+                    |imoonx
                     """.trimMargin()
-        Log.e(MainActivity::class.simpleName, text)
+        XLog.e(MainActivity::class.java, text)
 
         when (val x = 3) {
             1 -> {
-                Log.e(MainActivity::class.simpleName, "x == $x")
+                XLog.e(MainActivity::class.java, "x == $x")
             }
             2 -> {
-                Log.e(MainActivity::class.simpleName, "x == $x")
+                XLog.e(MainActivity::class.java, "x == $x")
             }
             else -> { // 注意这个块
-                Log.e(MainActivity::class.simpleName, "x != 1 , x != 2 x is $x")
+                XLog.e(MainActivity::class.java, "x != 1 , x != 2 x is $x")
             }
         }
 
         val person = Person()
         person.lastName = "wang"
-        Log.e(MainActivity::class.simpleName, person.lastName)
+        XLog.e(MainActivity::class.java, person.lastName)
 
         person.age = 1
-        Log.e(MainActivity::class.simpleName, "${person.age}")
+        XLog.e(MainActivity::class.java, "${person.age}")
 
         person.age = 11
-        Log.e(MainActivity::class.simpleName, "${person.age}")
+        XLog.e(MainActivity::class.java, "${person.age}")
     }
 }
